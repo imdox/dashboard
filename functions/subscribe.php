@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
 
 	 // Check if email aready exists
 
-      $sql1 = "SELECT id FROM subscribers WHERE email = ?";
+      $sql1 = "SELECT id FROM users WHERE email = ?";
       $stmt1 = $db->prepare($sql1);
       $stmt1->execute([$email]);
 
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     {
     
 	
-	$sql = "INSERT INTO subscribers(email)
+	$sql = "INSERT INTO users(email)
     VALUES (?)";
 
     $stmt = $db->prepare($sql);

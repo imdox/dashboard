@@ -74,7 +74,7 @@
                         <!-- .dropdown-messages -->
                         <ul class="dropdown-menu mailbox animated bounceInDown">
                             <li>
-                                <div class="drop-title">You have 4 new messages</div>
+                                <div class="drop-title">You have 4 new Suggestion</div>
                             </li>
                             <li>
                                 <div class="message-center">

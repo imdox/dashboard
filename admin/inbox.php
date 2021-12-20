@@ -68,10 +68,10 @@
                  <div class="top-left-part"><a class="logo" href="index.php"><b><img src="../plugins/images/icon.png" style="width: 30px; height: 30px;" alt="home" /></b><span class="hidden-xs"><b>Company</b></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-                    <li>
+                    <!-- <li>
                         <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
+                    </li>-->
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     
@@ -121,16 +121,16 @@
                         </ul>
                     </li>
                    
-                   <li><a href="inbox.php" class="waves-effect active"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</span></a>
+                   <li><a href="inbox.php" class="waves-effect active"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Suggestion</span></a>
                     </li>
                     
-                    <li><a href="subscribers.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribers</span></a>
+                    <li><a href="users.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Users</span></a>
                     </li>
                     
                      <li class="nav-small-cap">--- Other</li>
                     <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Access<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="users.php">Administrators</a></li>
+                            <li><a href="admin_users.php">Administrators</a></li>
                             <li><a href="new-user.php">Create Admin</a></li>
                             
                         </ul>
@@ -193,10 +193,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>
-                                                        <h4>Recent Messages(<b style="color: orange;"><?php echo mysqli_num_rows($query);?></b>)</h4>
+                                                        <h4>Recent Suggestion(<b style="color: orange;"><?php echo mysqli_num_rows($query);?></b>)</h4>
                                                         <?php 
                                                              if (mysqli_num_rows($query)==0) {
-                                                    echo "<i style='color:brown;'>No messages Yet :( </i> ";}
+                                                    echo "<i style='color:brown;'>No Suggestion Yet :( </i> ";}
                                                         ?>
                                                     </th>
                                                 </tr>

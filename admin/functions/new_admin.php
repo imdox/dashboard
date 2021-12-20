@@ -81,7 +81,7 @@
       try {
         $stmt->execute([$email, $password]);
         
-        header('Location:../users.php?success');
+        header('Location:../admin_users.php?success');
 
       }
 

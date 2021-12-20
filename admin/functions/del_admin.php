@@ -15,7 +15,7 @@ $stmt = $db->prepare($sql);
 
     try {
       $stmt->execute([$id]);
-      header('Location:../users.php?deleted');
+      header('Location:../admin_users.php?deleted');
 
       }
 
@@ -26,7 +26,7 @@ $stmt = $db->prepare($sql);
 
 }
 else {
-	header('Location:../users.php?del_error');
+	header('Location:../admin_users.php?del_error');
 }
 
 	

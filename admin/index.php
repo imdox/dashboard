@@ -24,8 +24,8 @@
     $sql_contacts = "SELECT * FROM contacts";
     $query_contacts = mysqli_query($connection, $sql_contacts);
 
-    $sql_subscribers = "SELECT * FROM subscribers";
-    $query_subscribers = mysqli_query($connection, $sql_subscribers);
+    $sql_users = "SELECT * FROM users";
+    $query_users = mysqli_query($connection, $sql_users);
 
     $sql_videos = "SELECT * FROM videos";
     $query_videos = mysqli_query($connection, $sql_videos);
@@ -77,10 +77,10 @@
                 <div class="top-left-part"><a class="logo" href="index.php"><b><img src="../plugins/images/icon.png" style="width: 30px; height: 30px;" alt="home" /></b><span class="hidden-xs"><b>Company</b></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-                    <li>
+                    <!-- <li>
                         <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
+                    </li>-->
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     
@@ -88,7 +88,7 @@
                     
                   
                    
-                    <!-- <!-- <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li> --> -->
+                     <!-- <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li> --> 
                     <!-- /.dropdown -->
                 </ul>
             </div>
@@ -131,17 +131,17 @@
                         </ul>
                     </li>
                    
-                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</span></a>
+                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Suggestion</span></a>
                     </li>
 
-                    <li><a href="subscribers.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribers</span></a>
+                    <li><a href="users.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Users</span></a>
                     </li>
                     
                      <li class="nav-small-cap">--- Other</li>
 
                     <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Access<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="users.php">Administrators</a></li>
+                            <li><a href="admin_users.php">Administrators</a></li>
                             <li><a href="new-user.php">Create Admin</a></li>
                             
                         </ul>
@@ -229,7 +229,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
                                             <h5 class="text-muted vb">Submitted Users</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success"><?php echo mysqli_num_rows($query_subscribers);?></h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-success"><?php echo mysqli_num_rows($query_users);?></h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>

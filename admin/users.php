@@ -1,7 +1,6 @@
 
 
 
-
 <?php
     
     ob_start();
@@ -22,7 +21,7 @@
 
     $email = $_SESSION['admin_email'];
 
-    $sql = "SELECT * FROM admin";
+    $sql = "SELECT * FROM users";
     $query = mysqli_query($connection, $sql);
 ?>
 
@@ -70,10 +69,10 @@
                 <div class="top-left-part"><a class="logo" href="index.php"><b><img src="../plugins/images/icon.png" style="width: 30px; height: 30px;" alt="home" /></b><span class="hidden-xs"><b>Company</b></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-                    <li>
+                    <!-- <li>
                         <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
+                    </li>-->
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     
@@ -123,16 +122,16 @@
                         </ul>
                     </li>
                    
-                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</span></a>
+                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Suggestion</span></a>
                     </li>
 
-                    <li><a href="subscribers.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribers</span></a>
+                    <li><a href="users.php" class="waves-effect active"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Users</span></a>
                     </li>
                     
                      <li class="nav-small-cap">--- Other</li>
-                    <li> <a href="#" class="waves-effect active"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Access<span class="fa arrow"></span></span></a>
+                    <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Access<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="users.php">Administrators</a></li>
+                            <li><a href="admin_users.php">Administrators</a></li>
                             <li><a href="new-user.php">Create Admin</a></li>
                             
                         </ul>
@@ -153,8 +152,8 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Administrators</a></li>
-                            <li class="active"> <a href="new-user.php" class="btn btn-success btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Create New Admin</a></li>
+                            <li><a href="#">Users</a></li>
+                            <li class="active">All</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -165,35 +164,7 @@
                     
                     <div class="col-sm-12">
                         <div class="white-box">
-
-                        		<?php
-									if (isset($_GET["success"])) {
-										echo 
-										'<div class="alert alert-success" >
-					                          <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-					                         <strong>DONE!! </strong><p> The new Company Administrator has been added. They can now log in to their account with their credentials.</p>
-					                    </div>'
-										;
-									}
-                                    elseif (isset($_GET["deleted"])) {
-                                        echo 
-                                        '<div class="alert alert-warning" >
-                                              <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                                             <strong>DELETED!! </strong><p> The Administrator has been successfully removed.</p>
-                                        </div>'
-                                        ;
-                                    }
-                                    elseif (isset($_GET["del_error"])) {
-                                        echo 
-                                        '<div class="alert alert-danger" >
-                                              <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
-                                             <strong>ERROR!! </strong><p> There was an error during deleting this record. Please try again.</p>
-                                        </div>'
-                                        ;
-                                    }
-								?>	
-
-                            <h3 class="box-title m-b-0">Company Administrators ( <x style="color: orange;"><?php echo mysqli_num_rows($query);?></x> )</h3>
+                            <h3 class="box-title m-b-0">All Users</h3>
                             <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
                             <div class="table-responsive">
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
@@ -201,7 +172,7 @@
                                     <?php 
 
                                     if (mysqli_num_rows($query)==0) {
-                                                    echo "<i style='color:brown;'>No Administrators Here :( </i> ";
+                                                    echo "<i style='color:brown;'>No Users Yet :( </i> ";
                                                 }
                                                 else{
 
@@ -210,14 +181,12 @@
                                                     <tr>
                                                         <th>email</th>
                                                         <th>date</th>
-                                                        <th>action</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
                                                         <th>email</th>
                                                         <th>date</th>
-                                                         <th>action</th>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
@@ -225,7 +194,7 @@
                                                 }
 
                                         while ($row = mysqli_fetch_array($query)) {
-                                            // $id = $row["id"]
+
 
                                     echo '
                                     
@@ -233,29 +202,8 @@
                                         <tr>
                                             <td>'.$row["email"].'</td>
                                             <td>'.$row["date"].'</td>
-                                            <td><a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal'.$row["id"].'" title="remove" style="color:red;"></i></a></td>
-                                       
-
-                                            <!-- /.modal -->
-                                            <div id="responsive-modal'.$row["id"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title">Are you sure you want to delete this admin?</h4></div>
-                                                        <div class="modal-footer">
-                                                        <form action="functions/del_admin.php" method="post">
-                                                        <input type="hidden" name="id" value="'.$row["id"].'"/>
-                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                            <!-- End Modal -->
-
-                                         </tr>
+                                        </tr>
+                                        
                                     ';
 
                                     }
@@ -267,11 +215,6 @@
                         </div>
                     </div>
                 </div>
-
-
-             
-
-
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <div class="right-sidebar">
