@@ -18,7 +18,7 @@
 
     $email = $_SESSION['admin_email'];
 
-    $sql = 'SELECT * FROM contacts';
+    $sql = 'SELECT * FROM suggestions';
 
     $query = mysqli_query($connection, $sql);
 
@@ -196,7 +196,26 @@
                                                         <h4>Recent Suggestion(<b style="color: orange;"><?php echo mysqli_num_rows($query);?></b>)</h4>
                                                         <?php 
                                                              if (mysqli_num_rows($query)==0) {
-                                                    echo "<i style='color:brown;'>No Suggestion Yet :( </i> ";}
+                                                                echo "<i style='color:brown;'>No Suggestion Yet :( </i> ";
+                                                            }else{
+                                                                echo '
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>User Name</th>
+                                                                    <th>Suggestion</th>
+                                                                    <th>Created Date</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <th>User Name</th>
+                                                                    <th>Suggestion</th>
+                                                                    <th>Created Date</th>
+                                                                </tr>
+                                                            </tfoot>
+                                                            <tbody>
+                                                                ';
+                                                            }
                                                         ?>
                                                     </th>
                                                 </tr>
@@ -211,7 +230,7 @@
                                                 <tr>
                                                    <td class="hidden-xs"><a href="inbox-detail.php?id='.$row["id"].'" />'.$row["names"].'</td>
                                                     <td class="max-texts"><a href="inbox-detail.php?id='.$row["id"].'" />'.$row["message"].'</td>
-                                                    <td class="text-right">'.$row["date"].'</td>
+                                                    <td class="text-xs">'.$row["date"].'</td>
                                                 </tr>';
                                             }
                                             ?>

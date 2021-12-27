@@ -19,8 +19,8 @@
 
     $email = $_SESSION['admin_email'];
 
-    $sql = 'SELECT * FROM videos';
-
+    $sql = 'SELECT v.*, c.title FROM videos AS v LEFT JOIN courses AS c ON c.id = v.blogid';
+ 
     $query = mysqli_query($connection, $sql);
 
 ?>
@@ -69,10 +69,10 @@
                  <div class="top-left-part"><a class="logo" href="index.php"><b><img src="../plugins/images/icon.png" style="width: 30px; height: 30px;" alt="home" /></b><span class="hidden-xs"><b>Company</b></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-                    <!-- <li>
+                    <li>
                         <form role="search" class="app-search hidden-xs">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>-->
+                    </li>
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     
@@ -122,17 +122,17 @@
                         </ul>
                     </li>
                    
-                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Suggestion</span></a>
+                   <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</span></a>
                     </li>
 
-                    <li><a href="users.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Users</span></a>
+                    <li><a href="subscribers.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribers</span></a>
                     </li>
                     
                      <li class="nav-small-cap">--- Other</li>
                     
                     <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Access<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="admin_users.php">Administrators</a></li>
+                            <li><a href="users.php">Administrators</a></li>
                             <li><a href="new-user.php">Create Admin</a></li>
                             
                         </ul>
@@ -187,62 +187,51 @@
                                         </div>'
                                         ;
                                     }
-                                ?>  
+                        ?>  
+                        <h4>Recent Videos (<b style="color: orange;"><?php echo mysqli_num_rows($query);?></b>)</h4>
+                                    
+                                
+                                        <div class="comment-center">
 
-
-
-                                        
-                                                        <h4>Recent Videos (<b style="color: orange;"><?php echo mysqli_num_rows($query);?></b>)</h4>
-                                                        <?php 
-                                                             if (mysqli_num_rows($query)==0) {
-                                                                echo "<i style='color:brown;'>No Videos Yet :( </i> ";}
-                                                        ?>
-                                                    
-                                                         <div class="comment-center">
-
-                                                             <?php
-                                                while ($row = mysqli_fetch_array($query))
-                                                        {
-                                                            $blogid = $row["blogid"];
-                                                            $sql2 = "SELECT * FROM courses WHERE id='$blogid'";
-                                                              $query2 = mysqli_query($connection, $sql2);
-
-                                                              while ($row2 = mysqli_fetch_assoc($query2)) {
-
-                                                echo
-                                              '<div class="comment-body">
-                                                            <div class="mail-contnet">
-                                                                <b>'.$row["name"].'</b>
-                                                                <h5>Blog Title : '.$row2["title"].'</h5>
-                                                                <span class="mail-desc">
-                                                                '.$row["comment"].'
-                                                                </span><a href="javacript:void(0)" class="action" data-toggle="modal" data-target="#responsive-modal'.$row["id"].'"><i class="ti-close text-danger"></i></a> <span class="time pull-right">'.$row["date"].'</span></div>
-                                                        </div>
-
-                                                         <!-- /.modal -->
-                                            <div id="responsive-modal'.$row["id"].'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title">Are you sure you want to delete this comment?</h4></div>
-                                                        <div class="modal-footer">
-                                                        <form action="functions/del_comment.php" method="post">
-                                                        <input type="hidden" name="id" value="'.$row["id"].'"/>
-                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger waves-effect waves-light">Delete</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                            <!-- End Modal -->
-
-                                                        ';
-
-                                                            } }
-
-                                                            ?>
+                                    <div class="white-box">
+                            <div class="table-responsive">
+                                <table class="table ">
+                                    <?php if (mysqli_num_rows($query)==0) {
+                                        echo "<i style='color:brown;'>No videos Yet :( Upload Course's first video today! </i> ";
+                                    } else {
+                                        echo '
+                                             <thead>
+                                            <tr>
+                                                <th>TITLE</th>
+                                                <th>Video Image</th>
+                                                <th>View Video</th>
+                                                <th>Course</th>
+                                                <th>DATE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        ';
+                                        while (($row = mysqli_fetch_array($query)))
+                                        {
+                                            echo '
+                                                <tr>
+                                                    <td class="txt-oflo">'.$row["name"].'</td>
+                                                    <td class="txt-oflo"><img width="60" src="'.$row["image"].'" /></td>
+                                                   <td class="txt-oflo">
+                                                    <a href="#myModal" class="showmodal" data-toggle="modal" data-url="'.$row["video"].'">
+                                                        <i class="icon-basic-video linea-basic" data-icon="&#xe022;"></i>
+                                                    </a>
+                                                   </td>
+                                                   <td>'.$row["title"].'</td>
+                                                    <td><span class="text-success">'.$row["date"].'</span></td>
+                                                </tr>
+                                            ';
+                                        }
+                                    } ?>
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
 
                                                     </div>
                                                                             
@@ -318,6 +307,23 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+
+    <div class="bs-example">
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Video</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="courseVideo" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
     <!-- jQuery -->
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -334,6 +340,11 @@
     <script src="js/custom.min.js"></script>
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script type="text/javascript">
+        $(".showmodal").on('click', function(){
+            var url = $(this).attr("data-url");
+            $("#courseVideo").attr('src', url);
+        });
+    </script>
 </body>
-
 </html>

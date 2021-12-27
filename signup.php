@@ -1,3 +1,21 @@
+<?php 
+session_start();
+require_once 'core/config/config.php';
+include("functions.php");
+$isLogin = false;
+if (isset($_SESSION['i_user_logged_in'])) :
+	$isLogin = $_SESSION['i_user_logged_in'];
+	if (!$isLogin) :
+        unset($_SESSION['i_user_logged_in']);
+        unset($_SESSION['i_user_id']);
+       // header('Location: login.php');
+    else:
+       $userId =  $_SESSION['i_user_id'];
+       $db = getDbInstance();
+       $userData = $db->rawQuery("select * from users where id = ".$userId .";");
+    endif;;
+endif;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,62 +55,101 @@
 
 <body>
     <!-- ====== Header Start ====== -->
-    <header class="ud-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html" style="margin:10px;">
-                            <img src="assets/images/logo/logo.png" alt="Logo" />
-                        </a>
-                        <button class="navbar-toggler">
-                          <span class="toggler-icon" style="background-color:#fff !important;"> </span>
-                          <span class="toggler-icon" style="background-color:#fff !important;"> </span>
-                          <span class="toggler-icon" style="background-color:#fff !important;"> </span>
-                        </button>
-
-                        <div class="navbar-collapse">
-                            <ul id="nav" class="navbar-nav mx-auto">
-                                <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="about.html">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="login.php">Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="signup.php">SignUp</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="navbar-btn d-none d-sm-inline-block">
-                            <a class="navbar-brand" href="index.html" style="margin:10px;">
-                                <img src="assets/images/logo/logo.png" alt="Logo" />
+    <div>
+        <header class="ud-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.php" style="margin:10px;height:120px;">
+                                <img src="assets/images/logo/logo.png" style="opacity:0;" alt="Logo" />
                             </a>
-                        </div>
-                    </nav>
+                            <button class="navbar-toggler">
+                            <span class="toggler-icon" style="background-color:#000 !important;"> </span>
+                            <span class="toggler-icon" style="background-color:#000 !important;"> </span>
+                            <span class="toggler-icon" style="background-color:#000 !important;"> </span>
+                            </button>
+
+                            <div class="navbar-collapse" style="margin-top: 15px;">
+                                <ul id="nav" class="navbar-nav mx-auto">
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="index.php">Home</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="about.php">About Us</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="course.php">Our Courses</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="event_n_training.php">Events and training</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="media_center.php">Media center</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="contact.php">Contact Us</a>
+                                    </li>
+
+                                    <?php 	if (!$isLogin) : ?>
+                                    <li class="nav-item">
+                                        <a class="ud-menu-scroll" href="signup.php">Login/Register</a>
+                                    </li>
+                                    <?php endif; ?>
+
+                                    <?php 	if ($isLogin) : ?>
+                                        <li class="nav-item nav-item-has-children">
+                                            <a href="javascript:void(0)"> <?php echo $userData[0]['f_name']; ?> </a>
+                                            <ul class="ud-submenu">
+                                            <li class="ud-submenu-item">
+                                                <a href="profile.php" class="ud-submenu-link">
+                                                Profile Page
+                                                </a>
+                                            </li>
+                                            <li class="ud-submenu-item">
+                                                <a href="logout.php" class="ud-submenu-link">
+                                                Logout
+                                                </a>
+                                            </li>
+                                            </ul>
+                                        </li>
+                                    <?php endif; ?>
+
+                                </ul>
+                            </div>
+                            <!-- <div class="navbar-btn d-none d-sm-inline-block">
+                                <a class="navbar-brand" href="index.php" style="margin:10px;">
+                                    <img src="assets/images/logo/logo2.png" alt="Logo" />
+                                </a>
+                            </div> -->
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <!-- ====== Header End ====== -->
-
-    <!-- ====== Hero Start ====== -->
-    <section class="ud-page-banner">
+        </header>
+   </div> 
+ <!-- ====== Banner Start ====== -->
+ <section class="ud-hero" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="ud-banner-content">
-                        <h1>Sign Up</h1>
+                    <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+                        <h4 class="ud-hero-title">
+                           Sign Up
+                        </h4>
                     </div>
+                    <div class="ud-hero-brands-wrapper wow fadeInUp"></div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ====== Hero End ====== style="margin-top: 50px;"-->
+    <!-- ====== Banner End ====== -->
 
      <!-- ====== Login Start ====== -->
      <section class="ud-login">
@@ -100,7 +157,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-login-wrapper">
-              <form class="ud-login-form">
+              <form class="ud-login-form" method="POST" action="add_user.php">
               <div class="ud-form-group">
                   <input
                     type="text"
@@ -110,8 +167,8 @@
                 </div>
                 <div class="ud-form-group">
                   <input
-                    type="l_name"
-                    name="text"
+                    type="text"
+                    name="l_name"
                     placeholder="Last Name"
                   />
                 </div>
@@ -158,11 +215,11 @@
                   />
                 </div>
                 <div class="ud-form-group">
-                  <button type="submit" class="ud-main-btn w-100">Login</button>
+                  <button type="submit" class="ud-main-btn w-100">SIgn Up</button>
                 </div>
               </form>
               <p class="signup-option">
-                Aready Register,  <a href="Login.php"> Sign In </a>
+                Aready Register,  <a href="login.php"> Sign In </a>
               </p>
             </div>
           </div>
@@ -188,7 +245,7 @@
                     <div class="col-md-2">
                         <ul class="ud-footer-bottom-left">
                             <li>
-                                <a class="navbar-brand" href="index.html" style="margin:10px;">
+                                <a class="navbar-brand" href="index.php" style="margin:10px;">
                                     <img src="assets/images/logo/logo.png" alt="Logo" />
                                 </a>
                             </li>

@@ -1,17 +1,13 @@
-
-
 <?php 
-
- 
 require_once "db.php";
 
 if (isset($_POST["id"])) {
 
 	$id = $_POST["id"];
 
-	$sql = "DELETE FROM contacts WHERE id=?";
+   $sql = "DELETE FROM suggestions WHERE id=?";
 
-$stmt = $db->prepare($sql);
+    $stmt = $db->prepare($sql);
 
 
     try {

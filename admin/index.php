@@ -2,7 +2,7 @@
 <?php
     ob_start();
     require_once "functions/db.php";
-
+    require_once '../core/config/config.php';
     // Initialize the session
 
     session_start();
@@ -21,7 +21,7 @@
     $sql_posts = "SELECT * FROM courses";
     $query_posts = mysqli_query($connection, $sql_posts);
 
-    $sql_contacts = "SELECT * FROM contacts";
+    $sql_contacts = "SELECT * FROM suggestions";
     $query_contacts = mysqli_query($connection, $sql_contacts);
 
     $sql_users = "SELECT * FROM users";
@@ -128,6 +128,16 @@
                             <li><a href="new-post.php">Create Course</a></li>
                             <li><a href="videos.php" class="waves-effect">Videos</a>
                             </li>
+                            <li><a href="new-video.php" class="waves-effect">Add Videos</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Events<span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="events.php">Event List</a></li>
+                            <li><a href="new-event.php">Create Event</a></li>
+                            
                         </ul>
                     </li>
                    
@@ -136,6 +146,7 @@
 
                     <li><a href="users.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Users</span></a>
                     </li>
+
                     
                      <li class="nav-small-cap">--- Other</li>
 
@@ -158,7 +169,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"><?php echo '';//$email;?></h4> </div>
+                        <h4 class="page-title"><?php echo BASE_PATH;//$email;?></h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>

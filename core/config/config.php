@@ -17,11 +17,22 @@ require_once BASE_PATH.'/core/config/MysqliDb/MysqliDb.php';
 define('DB_HOST', "localhost");
 define('DB_USER', "root");
 define('DB_PASSWORD', "root");
-define('DB_NAME', "Company");
+define('DB_NAME', "project14");
 
 /**
  * Get instance of DB object
  */
 function getDbInstance() {
 	return new MysqliDb(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+}
+
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }

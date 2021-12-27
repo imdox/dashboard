@@ -46,7 +46,7 @@
                 <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
                 <!-- Logo -->
                 <div class="top-left-part">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="index.php">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b><img src="../plugins/images/eliteadmin-logo.png" alt="home" /></b>
                         <!-- Logo text image you can use text also -->
@@ -196,9 +196,9 @@
                         </ul>
                     </li>
                     <li class="nav-small-cap m-t-10">--- Main Menu</li>
-                    <li> <a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard <span class="fa arrow"></span> <span class="label label-rouded label-custom pull-right">4</span></span></a>
+                    <li> <a href="index.php" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard <span class="fa arrow"></span> <span class="label label-rouded label-custom pull-right">4</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="index.html">Demographical</a> </li>
+                            <li> <a href="index.php">Demographical</a> </li>
                             <li> <a href="index2.html">Minimalistic</a> </li>
                             <li> <a href="index3.html">Analitical</a> </li>
                             <li> <a href="index4.html">Simpler</a> </li>
@@ -206,26 +206,26 @@
                     </li>
                     <li> <a href="javascript:void(0);" class="waves-effect"><i class="linea-icon linea-basic fa-fw text-danger" data-icon="7"></i> <span class="hide-menu text-danger"> Multipurpose <span class="fa arrow"></span> <span class="label label-rouded label-danger pull-right">HOT</span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="../eliteadmin-hospital/index.html">Hospital Admin</a> </li>
-                            <li> <a href="../eliteadmin-crm/index.html">CRM Admin</a> </li>
-                            <li> <a href="../eliteadmin-university/index.html">University Admin</a> </li>
-                            <li> <a href="../eliteadmin-music/index.html">Music Admin</a> </li>
-                            <li> <a href="../eliteadmin-real-estate/index.html">Real Estate Admin</a> </li>
+                            <li> <a href="../eliteadmin-hospital/index.php">Hospital Admin</a> </li>
+                            <li> <a href="../eliteadmin-crm/index.php">CRM Admin</a> </li>
+                            <li> <a href="../eliteadmin-university/index.php">University Admin</a> </li>
+                            <li> <a href="../eliteadmin-music/index.php">Music Admin</a> </li>
+                            <li> <a href="../eliteadmin-real-estate/index.php">Real Estate Admin</a> </li>
                             <li role="separator" class="divider"></li>
-                            <li> <a href="../eliteadmin-inverse/index.html">Inverse</a></li>
-                            <li> <a href="../eliteadmin-colors/index.html">Colors</a></li>
-                            <li> <a href="../eliteadmin-wpmenu/index.html">Wpmenu</a></li>
-                            <li> <a href="../eliteadmin-ecommerce/index.html">Ecommerce</a></li>
-                            <li> <a href="../eliteadmin-modern/index.html">Modern</a></li>
+                            <li> <a href="../eliteadmin-inverse/index.php">Inverse</a></li>
+                            <li> <a href="../eliteadmin-colors/index.php">Colors</a></li>
+                            <li> <a href="../eliteadmin-wpmenu/index.php">Wpmenu</a></li>
+                            <li> <a href="../eliteadmin-ecommerce/index.php">Ecommerce</a></li>
+                            <li> <a href="../eliteadmin-modern/index.php">Modern</a></li>
                             <li> <a href="../eliteadmin-inverse-php/index.php">Basic PHP</a></li>
                             <li> <a href="../eliteadmin-material/index3.html">Material Design</a></li>
-                            <li> <a href="../eliteadmin-dark/index.html">Dark</a></li>
+                            <li> <a href="../eliteadmin-dark/index.php">Dark</a></li>
                             <li> <a href="../eliteadmin-mini-sidebar/index3.html">Mini Sidebar</a></li>
                             <li> <a href="../eliteadmin-horizontal-navbar/index3.html">Horizontal Boxed Nav</a></li>
-                            <li> <a href="../eliteadmin-horizontal-nav-fullwidth/index.html">Horizontal Full Nav</a></li>
+                            <li> <a href="../eliteadmin-horizontal-nav-fullwidth/index.php">Horizontal Full Nav</a></li>
                             <li> <a href="../eliteadmin-iconbar/index4.html">Iconbar</a></li>
-                            <li> <a href="../eliteadmin-rtl/index.html">Eliteadmin RTL</a></li>
-                            <li> <a href="../eliteadmin-inverse-rtl/index.html">Inverse RTL</a></li>
+                            <li> <a href="../eliteadmin-rtl/index.php">Eliteadmin RTL</a></li>
+                            <li> <a href="../eliteadmin-inverse-rtl/index.php">Inverse RTL</a></li>
                         </ul>
                     </li>
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Apps <span class="fa arrow"></span></span></a>
@@ -238,7 +238,7 @@
                                     <li> <a href="compose.html">Compose mail</a></li>
                                 </ul>
                             </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Contacts<span class="fa arrow"></span></a>
+                            <li><a href="javascript:void(0)" class="waves-effect">Suggestion<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li> <a href="contact.html">Contact1</a></li>
                                     <li> <a href="contact2.html">Contact2</a></li>

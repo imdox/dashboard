@@ -22,7 +22,7 @@
 
         if (isset($_GET['id'])) {
         $inboxid = $_GET['id'];
-        $sql="SELECT * FROM contacts WHERE id='$inboxid'";
+        $sql="SELECT * FROM suggestions WHERE id='$inboxid'";
       }
       else {
         header('Location:inbox.php');
